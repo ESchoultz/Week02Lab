@@ -13,5 +13,16 @@
     </head>
     <body>
         <h1>Arithmetic Calculator</h1>
+        <form method="post" action="arithmetic">
+            First: <input type="text" name="firstval" value="${firstval}"><br>
+            Second : <input type="text" name="secondval" value="${secondval}"
+            <input type="submit" value="+">
+            <input type="submit" value="-">
+            <input type="submit" value="*">
+            <input type="submit" value="%">
+        </form>
+            <div>
+                <p>Results: </p>
+            </div>
     </body>
 </html>
