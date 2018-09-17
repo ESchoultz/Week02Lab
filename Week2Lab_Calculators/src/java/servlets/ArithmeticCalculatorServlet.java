@@ -23,29 +23,35 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         String firstval = request.getParameter("firstval");
         String secondval = request.getParameter("secondval");
-        String arithType = request.getParameter("arithType");
+        String atype = request.getParameter("atype");
         request.setAttribute("firstval", firstval);
         request.setAttribute("secondval", secondval);
 
         int fval;
         int sval;
-        int nval = 0;
 
         try {
             fval = Integer.parseInt(firstval);
             sval = Integer.parseInt(secondval);
-
-            if (arithType.equals("+")) {
+            int nval = 0;
+            
+            switch(atype){
+            case "+": {
                 nval = (fval + sval);
+                break;
             }
-            if (arithType.equals("-")) {
+            case "-": {
                 nval = (fval - sval);
+                break;
             }
-            if (arithType.equals("*")) {
+            case "*": {
                 nval = (fval * sval);
+                break;
             }
-            if (arithType.equals("%")) {
+            case "%": {
                 nval = (fval % sval);
+                break;
+            }
             }
             request.setAttribute("result", "Result: " + nval);
             request.setAttribute("firstval", fval);
