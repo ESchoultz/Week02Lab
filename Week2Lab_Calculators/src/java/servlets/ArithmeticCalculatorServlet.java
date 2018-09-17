@@ -24,7 +24,6 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         String firstval = request.getParameter("firstval");
         String secondval = request.getParameter("secondval");
         String arithType = request.getParameter("arithType");
-
         request.setAttribute("firstval", firstval);
         request.setAttribute("secondval", secondval);
 
@@ -38,19 +37,15 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
 
             if (arithType.equals("+")) {
                 nval = (fval + sval);
-                return;
             }
             if (arithType.equals("-")) {
                 nval = (fval - sval);
-                return;
             }
             if (arithType.equals("*")) {
                 nval = (fval * sval);
-                return;
             }
             if (arithType.equals("%")) {
                 nval = (fval % sval);
-                return;
             }
             request.setAttribute("result", "Result: " + nval);
             request.setAttribute("firstval", fval);
