@@ -21,7 +21,7 @@
             ${message}
         </div> 
         <div>
-            <a href="/arithmetic">Arithmetic Calculator</a>
+            <a href="arithmetic">Arithmetic Calculator</a>
         </div>
     </body>
 </html>

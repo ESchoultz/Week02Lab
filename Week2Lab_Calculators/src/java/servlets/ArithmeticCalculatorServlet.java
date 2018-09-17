@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,35 +30,37 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
 
         int fval;
         int sval;
-        int nval=0;
+        int nval = 0;
 
         try {
             fval = Integer.parseInt(firstval);
             sval = Integer.parseInt(secondval);
-            
-            if (arithType.equalsIgnoreCase("+")){
-                nval = ( fval + sval );
+
+            if (arithType.equals("+")) {
+                nval = (fval + sval);
                 return;
             }
-            if (arithType.equalsIgnoreCase("-")){
-                nval = ( sval - fval );
+            if (arithType.equals("-")) {
+                nval = (fval - sval);
                 return;
             }
-            if (arithType.equalsIgnoreCase("*")){
-                nval = ( fval * sval );
+            if (arithType.equals("*")) {
+                nval = (fval * sval);
                 return;
             }
-            if (arithType.equalsIgnoreCase("%")){
-                nval = ( sval % fval );
+            if (arithType.equals("%")) {
+                nval = (fval % sval);
                 return;
             }
-            request.setAttribute("result", "Your age next year will be " + nval);
-            getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
-        } catch (NumberFormatException e) {
-            request.setAttribute("result", "Please enter both values.");
+            request.setAttribute("result", "Result: " + nval);
+            request.setAttribute("firstval", fval);
+            request.setAttribute("secondval", sval);
+            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
+            } catch (NumberFormatException e) {
+            request.setAttribute("result", "Result: Invalid.");
             request.setAttribute("firstval", firstval);
             request.setAttribute("secondval", secondval);
-            getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
         }
     }
 }
