@@ -34,30 +34,30 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
             fval = Integer.parseInt(firstval);
             sval = Integer.parseInt(secondval);
             int nval = 0;
-            
-            switch(atype){
-            case "+": {
-                nval = (fval + sval);
-                break;
-            }
-            case "-": {
-                nval = (fval - sval);
-                break;
-            }
-            case "*": {
-                nval = (fval * sval);
-                break;
-            }
-            case "%": {
-                nval = (fval % sval);
-                break;
-            }
+
+            switch (atype) {
+                case "+": {
+                    nval = (fval + sval);
+                    break;
+                }
+                case "-": {
+                    nval = (fval - sval);
+                    break;
+                }
+                case "*": {
+                    nval = (fval * sval);
+                    break;
+                }
+                case "%": {
+                    nval = (fval % sval);
+                    break;
+                }
             }
             request.setAttribute("result", "Result: " + nval);
             request.setAttribute("firstval", fval);
             request.setAttribute("secondval", sval);
             getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
-            } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             request.setAttribute("result", "Result: Invalid.");
             request.setAttribute("firstval", firstval);
             request.setAttribute("secondval", secondval);
