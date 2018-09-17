@@ -29,23 +29,39 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         String firstval = request.getParameter("firstval");
         String secondval = request.getParameter("secondval");
+        String arithType = request.getParameter("arithType");
 
         request.setAttribute("firstval", firstval);
         request.setAttribute("secondval", secondval);
 
         int fval;
         int sval;
-        int nval;
+        int nval=0;
 
         try {
             fval = Integer.parseInt(firstval);
             sval = Integer.parseInt(secondval);
-            nval = (fval + sval);
-
+            
+            if (arithType.equalsIgnoreCase("+")){
+                nval = ( fval + sval );
+                return;
+            }
+            if (arithType.equalsIgnoreCase("-")){
+                nval = ( sval - fval );
+                return;
+            }
+            if (arithType.equalsIgnoreCase("*")){
+                nval = ( fval * sval );
+                return;
+            }
+            if (arithType.equalsIgnoreCase("%")){
+                nval = ( sval % fval );
+                return;
+            }
             request.setAttribute("result", "Your age next year will be " + nval);
             getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
         } catch (NumberFormatException e) {
-            request.setAttribute("message", "Invalid.");
+            request.setAttribute("result", "Please enter both values.");
             request.setAttribute("firstval", firstval);
             request.setAttribute("secondval", secondval);
             getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);

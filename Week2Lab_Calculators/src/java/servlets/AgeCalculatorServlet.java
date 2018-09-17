@@ -5,7 +5,6 @@ package servlets;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -46,20 +45,18 @@ public class AgeCalculatorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String age = request.getParameter("age");
-        
+
         request.setAttribute("age", age);
         int nage;
-        
-        try
-        {
-           nage = Integer.parseInt(age);
-           nage++;
-           request.setAttribute("message", "Your age next year will be " + nage);
-           getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
-        }
-        catch(NumberFormatException e){
+
+        try {
+            nage = Integer.parseInt(age);
+            nage++;
+            request.setAttribute("message", "Your age next year will be " + nage);
+            getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
+        } catch (NumberFormatException e) {
             request.setAttribute("message", "You must give your current age.");
-            getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);        
-                }
+            getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
+        }
     }
 }

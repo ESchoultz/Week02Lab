@@ -17,11 +17,11 @@
             Enter Your Age: <input type="text" name="age" value="${age}"><br>
             <input type="submit" value="Age Next Birthday">
         </form>
-    <div>
-        ${message}
-    </div> 
-    <div>
-        <a href="/arithmetic"<]>Arithmetic Calculator</a>
-    </div>
+        <div>
+            ${message}
+        </div> 
+        <div>
+            <a href="/arithmetic">Arithmetic Calculator</a>
+        </div>
     </body>
 </html>
